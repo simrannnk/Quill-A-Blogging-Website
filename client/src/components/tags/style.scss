@@ -1,0 +1,24 @@
+.tags-container{
+    margin-bottom: 20px;
+    .heading{
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+    .tags{
+        background-color: #f7f5f5;
+        border-radius: 20px;
+        padding: 8px 17px;
+        margin-right: 10px;
+        margin-top: 10px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .tags:hover{
+        border: 1px solid rgb(233, 232, 232);
+    }
+    .all-tags{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

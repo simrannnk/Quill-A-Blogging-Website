@@ -1,0 +1,80 @@
+.hero-section{
+    // padding: 0 32px;
+    // margin: 70px auto 0;
+    // width: 80%;
+    // background-color: white;
+    height: 100vh;
+    background-image: url(https://printify.com/pfh/media/background-IAMAETLT.svg);
+    background-repeat: no-repeat;
+    background-position: right;
+
+
+    .inner{
+      max-width: 1216px;
+    margin: 0 auto;
+    display: flex;
+    flex: 1;
+    padding: 56px 24px;
+    justify-content: space-between;
+
+
+    .text-container{
+        min-width: 50%;
+    text-align: start;
+
+    .head{
+        font-size: 60px;
+    line-height: 72px;
+    color: rgb(93, 8, 8);
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    
+    }
+    .para{
+        padding-top: 0px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #485256;
+    font-size: 30px;
+    }
+
+    .btn-container{
+        display: flex;
+    padding-top: 48px;
+
+    .btn1{
+        color: #fff;
+    background-color: black;
+    box-shadow: 0 0 #00c3603d;
+    border: 0;
+    text-align: center;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 20px 26px;
+        
+    }
+
+    }
+    }
+    }
+
+    .footer{
+        background-color: #000000d1;
+        color: white;
+        padding: 20px 0;
+        margin: auto;
+        text-align: center;
+    }
+
+    .image-container{
+        img{
+            margin-right: 50px;
+            width: 320px;
+        }
+    }
+    
+}

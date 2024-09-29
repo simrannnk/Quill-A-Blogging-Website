@@ -1,0 +1,70 @@
+.landingpage{
+    .content{
+        display: flex;
+        justify-content: space-between;  
+        margin: auto;
+        width: 80%;
+
+    .left{
+        width: 70%;
+        padding: 30px 100px 30px 0px;
+    }
+    .right{
+        width: 30%;
+        border-left: 1px solid #ececec;
+        padding: 30px 0px 30px 50px;
+
+        .library-contr{
+            margin-bottom: 20px;
+            width: unset;
+            .heading{
+                font-weight: 600;
+                font-size: 16px;
+                margin-bottom: 16px;
+            }
+            .banner{
+                background-color: #daeaf9;
+                position: relative;
+                padding: 40px 30px;
+                font-size: 18px;
+                overflow: hidden;
+                font-weight: 600;
+                /* width: 60%; */
+                border-radius: 8px;
+                div{
+                    font-size: 18px;
+                    font-weight: 700;
+                    margin-bottom: 20px;
+                }
+                p{
+                    font-size: 16px;
+                    font-weight: 400;
+                    margin: 0;
+                    margin-top: 10px;
+              
+                }
+                button{
+                    border: none;
+                    background-color: unset;
+                    border: 1px solid black;
+                    border-radius: 20px;
+                    font-weight: 700;
+                    margin-top: 26px;
+                    padding: 7px 16px;
+                }
+            }
+            .bookmark{
+                position: absolute;
+                bottom: -11px;
+                right: 1px;
+                background-color: rgba(220, 245, 245, 0.6784313725);
+                border-radius: 50%;
+                padding: 46px;
+                margin-right: 18px;
+            }
+        }
+    }
+}
+
+
+}   

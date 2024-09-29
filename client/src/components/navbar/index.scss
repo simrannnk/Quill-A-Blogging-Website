@@ -1,0 +1,61 @@
+.nav-container{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ececec;
+    padding: 14px 120px;
+    background-color: #fbfbfb;
+
+    .app-logo{
+        width: 32px;
+    }
+    .app-name{
+        font-weight: 800;
+        margin-left: 6px;
+        font-size: 20px;
+    }
+    .left, .right{
+        display: flex;
+        align-items: center;    
+    }
+
+    button{
+        cursor: pointer;
+        border: none;
+        background: none;
+        margin-left: 10px;
+        display: flex;
+        font-size: 14px;
+    }
+    .get-started{
+        background-color: black;
+        color: #FFF;
+        padding: 10px 20px;
+        border-radius: 20px;
+    }
+    .right {
+        .publish-btn{
+            background-color: #1a8917;
+            padding: 10px 18px;
+            border-radius: 20px;
+            color: white;
+        }
+        .publish-btn:disabled{
+            opacity: 0.5;
+        }
+        .user-inital{
+            background-color: black;
+            padding: 10px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            font-size: 18px;
+            color: white;
+            height: 37px;
+            width: 37px;
+        }
+    }
+    
+
+    
+}

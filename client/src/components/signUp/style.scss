@@ -1,0 +1,274 @@
+
+button:hover{
+    cursor: pointer;
+}
+button:disabled{
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+.signup-wrapper{
+    height: 100vh;
+    width: 100vw;
+    // background-color: #d5d1f7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.signup-wrapper .main-container{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+// .signup-wrapper .main-container .left-contr{
+//     width: 100%;
+// }
+.signup-wrapper .main-container .signUp{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.signup-wrapper .main-container .signUp .signUp-btn{
+    border: none;
+    background-color: transparent;
+    // color: rebeccapurple;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: underline;
+}
+.signup-wrapper .signin-form{
+    box-shadow: rgba(0, 0, 0, 0.0509803922) 0px 0px 4px, rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 70px 40px;
+    width: 100%;
+}
+
+.signup-wrapper .signin-form .logo{
+    display: flex;
+    align-items: center;
+}
+.signup-wrapper .signin-form h1{
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.signup-wrapper .signin-form .logo .name{
+    margin-left: 5px;
+    font-weight: 700;
+    font-size: 24px;
+}
+.signup-wrapper .signin-form .logo img{
+    width: 30px;
+}
+
+.signup-wrapper .signin-form .form .input-contr{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+    .pass-text{
+        margin-top: 6px;
+        font-size: 12px;
+    }
+    button{
+        right: 7px;
+        top: 22px;
+        position: absolute;
+        border: none;
+        outline: none;
+        background-color: white;
+    }
+}
+.signup-wrapper .signin-form .form .input{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.signup-wrapper .signin-form .form .input label{
+    color: grey;
+    margin-left: -10px;
+    font-size: 14px;
+}
+.signup-wrapper .signin-form .form input{
+    margin-top: 10px;
+    border: 1px solid #c6c2c2 !important;
+    background-color: #fcfcfc;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 38px;
+    padding: 0 10px;
+}
+.signup-wrapper .signin-form .signIn-btn{
+    height: 40px;
+    padding: 10px 40px;
+    border-radius: 5px;
+    border-radius: 20px;
+    background-color: #000;
+    color: #f2f2f2;
+    border: none;
+}
+
+
+
+
+
+.chatpage-wrapper{
+    display: flex;
+    height: 100vh;
+}
+.chatlist-wrapper{
+    width: 30%;
+    background-color: #f4f6f7;
+    margin: 20px;
+    border-radius: 16px;
+    position: relative;
+}
+.chatlist-wrapper .searchChat-wrapper{
+    background-color: white;
+    border-radius: 10px;
+    position: absolute;
+    min-height: 100px;
+    margin-top: 9px;
+    width: auto;
+    min-width: 200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+}
+.chatlist-wrapper .searchChat-wrapper .startChat-btn{
+    padding: 10px;
+    border: none;
+    background-color: rebeccapurple;
+    color: white;
+    width: 100px;
+    align-items: center;
+    text-align: center;
+    border-radius: 5px;
+}
+.chatlist-wrapper .search-container{
+    padding: 20px 26px;
+}
+.chatlist-wrapper .chat-list{
+    padding: 0 20px;
+}
+.chatlist-wrapper .chat-list ul{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+.chatlist-wrapper .searchbar{
+    border-radius: 16px;
+    padding: 10px 14px;
+    width: 90%;
+    border: none;
+    font-size: 12px;
+    background-color: #e6ebeb;
+    height: 24px;
+    outline: none;
+}
+.chatlist-wrapper .chat-list .card{
+    height: 45px;
+    align-items: center;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #dbd8d8;
+}
+.chatlist-wrapper .chat-list .card:hover{
+    background-color: #e6ebeb;
+}
+.chatlist-wrapper .chat-list .card .user-details{
+    display: flex;
+    align-items: center; 
+}
+.chatlist-wrapper .chat-list .card .user-details .userImg-contr img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.chatlist-wrapper .chat-list .card .user-details .userName-contr{
+    font-weight: 600;
+}
+
+.error-msg{
+    margin: 20px 0;
+    font-size: 14px;
+    color: #c83737;
+    font-weight: 600;
+}
+
+.otp-error{
+    color: red;
+    font-weight: 500;
+    font-size: 14px;
+    margin: 20px 0 20px 0;
+}
+
+.signup-wrapper{
+    .otp-modal{
+        box-shadow: rgba(0, 0, 0, 0.0509803922) 0px 0px 4px, rgba(0, 0, 0, 0.15) 0px 2px 8px;
+        background-color: white;
+        border-radius: 20px;
+        padding: 70px 40px;
+        width: 30%;
+        display: flex;
+        margin: auto;
+        justify-content: center;
+        flex-direction: column;
+
+        .logo{
+            display: flex;
+            align-items: center;
+            .name{
+                margin-left: 5px;
+                font-weight: 700;
+                font-size: 24px;
+            }
+        }
+        h1{
+            margin-top: 20px;
+            margin-bottom: 0;
+        }
+        p{
+            margin-top: 6px;
+            font-size: 13px;
+            margin-bottom: 30px;
+        }
+        .resend-btn{
+            margin-top: 10px;
+            border: none;
+            outline: none;
+            background-color: white;
+            font-size: 13px;
+            // color: green;
+            font-weight: 600;
+        }
+        .continue-btn{
+            border: none;
+            padding: 10px 20px;
+            width: 110px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: white;
+            background-color: black;
+        }
+        .otp-error{
+            color: red;
+            font-weight: 500;
+            font-size: 14px;
+            margin: 20px 0 20px 0;
+        }
+    }
+}
