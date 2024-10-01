@@ -1,16 +1,6 @@
 import User from "../model/user.js";
 import { generateToken } from "../SecretToken.js";
-
-const sendOTP = async (email) => {
-    const payload =  {
-      userId: email
-    }
-    await axiosInstance.post('api/otp/send', payload).then((res) => {
-    })
-    .catch((err) => {
-      console.log("error is", err)
-    })
-}
+import { sendWelcomeMail } from "../sendEmail.js";
 
 
 export const userExists = async (req,res) => {
@@ -42,7 +32,7 @@ export const signupUser = async (req, res) => {
             const newUser = userData && new User(userData);
             await newUser.save(); 
             const token =  generateToken(newUser._id);
-            // sendWelcomeMail(userData.userId, userData.userName);
+            sendWelcomeMail(userData.userId, userData.userName);
             res.status(200).json({message: "User is succesfully signed up", status: "SUCCESS", token, user_id: newUser._id})
         }
 

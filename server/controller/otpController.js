@@ -1,5 +1,5 @@
 import Otp from "../model/otp.js";
-import { sendWelcomeMail, sendOtpMail }  from '../sendEmail.js';
+import {sendOtpMail }  from '../sendEmail.js';
 import crypto from 'crypto';
 import bcrypt from 'bcryptjs';
 

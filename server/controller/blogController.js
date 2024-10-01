@@ -1,4 +1,5 @@
 import Blog from "../model/blog.js";
+import { sendPublishMail } from "../sendEmail.js";
 
 export const createBlog = async (req, res) => {
     const { title, content, author, status } = req.body;
@@ -116,7 +117,7 @@ export const deleteDraft = async (req, res) => {
 export const publishBlog = async(req, res) => {
     try {
         const blogId = req.params.id;
-        const {storyTags, bannerImage} = req.body;
+        const {storyTags, bannerImage, followingList, userName, blogTitle} = req.body;
     
         const blog = await Blog.findById(blogId);
 
@@ -126,6 +127,7 @@ export const publishBlog = async(req, res) => {
             blog.bannerImage = bannerImage,
             blog.tags= storyTags;
         }
+        followingList?.length > 0 && sendPublishMail(followingList, userName, blogTitle);
         await blog.save();
         res.status(200).json({
         message: 'Blog published successfully',
