@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = 'http://localhost:5000/'
+const apiUrl = 'https://quill-a-blogging-website-4.onrender.com'
 
 const axiosInstance = axios.create(
     {
