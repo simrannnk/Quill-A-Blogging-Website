@@ -140,7 +140,7 @@ const BlogCard = ({blogData, userDetails, allBlogs, setAllBlogs}) => {
 
                         </div>
                         <button className='bookmark'>
-                            {isBookmarked ? <FaBookmark style={{fontSize:"14px", cursor:"pointer", color:"green"}} onClick={() => handleBookmark()}/> : <MdOutlineBookmarkAdd style={{color:"grey", fontSize:"20px", cursor:"pointer"}} onClick={() => handleBookmark()}/>}
+                            {isBookmarked ? <FaBookmark style={{fontSize:"16px", cursor:"pointer", color:"green"}} onClick={() => handleBookmark()}/> : <MdOutlineBookmarkAdd style={{color:"black", fontSize:"20px", cursor:"pointer"}} onClick={() => handleBookmark()}/>}
                         </button>
                     </div>
      

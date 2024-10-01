@@ -7,7 +7,6 @@ import OtpInput from 'react-otp-input';
 import { FaEyeSlash } from "react-icons/fa";
 
 import axiosInstance from "../../service/api";
-import OtpModal from "../modals/otpModal";
 
 const SignUp = (props) => {
   const navigate = useNavigate();
@@ -30,16 +29,28 @@ const SignUp = (props) => {
     setOtpMsg('');
   };
 
-  const storeUserData = (userData) => {
-    const user = {
-      userName: userData.username,
-      userId: userData.email,
-      token: userData.token,
-      isAuthenticated: userData.token ? true : false,
-      user_id: userData.user_id
-    };
-    
+  const storeUserData = (userData, type) => {
+    if(type === 'register'){
+      const user = {
+        userName: userData.username,
+        userId: userData.email,
+        token: userData.token,
+        isAuthenticated: userData.token ? true : false,
+        user_id: userData.user_id
+      };
     localStorage.setItem('userAuth', JSON.stringify(user));
+    }
+    else{
+      console.log("user data is", userData);
+      const user = {
+        userId: userData.email,
+        isAuthenticated: true,
+        user_id: userData.user_id,
+        userName: userData.username,
+      }
+    localStorage.setItem('userAuth', JSON.stringify(user));
+    }
+
   };
 
   const isValidate = (email, password) => {
@@ -74,7 +85,6 @@ const SignUp = (props) => {
           userId: userCreds.email
         }
         axiosInstance.post('api/otp/send', payload).then((res) => {
-          console.log("res is", res);
           // navigate('/quill')
         })
         .catch((err) => {
@@ -107,8 +117,8 @@ const SignUp = (props) => {
     })
   }
   const handleSignUp = async (type) => {
-    console.log("type is", type);
     setShowError(true);
+    console.log("type is", type)
     if(!isValidate(userCreds.email, userCreds.password)){
       if(type === 'register'){
         const payload = {
@@ -125,7 +135,7 @@ const SignUp = (props) => {
             token: res.data.token,
             user_id: res.data.user_id,
           }
-          storeUserData(userData)
+          storeUserData(userData, 'register')
           navigate('/quill');
         }).catch((err) => {
           console.log("error is", err)
@@ -139,14 +149,14 @@ const SignUp = (props) => {
   
         await axiosInstance.post('api/auth/login', payload).then((res) => {
           const userData = {
-            username:userCreds.name,
+            username: res.data.user.userName,
             email: userCreds.email,
             // token: res.data.token,
-            user_id: res.data._id,
+            user_id: res.data.user._id,
+            isAuthenticated: true
           }
-          storeUserData(userData);
+          storeUserData(userData, 'login');
           navigate('/quill');
-          console.log("response is", res);
         }).catch((err) => console.log("error is", err));
       }
     }
@@ -168,6 +178,7 @@ const SignUp = (props) => {
     })
     setShowError(false);
     setUserExists(false);
+    setShowPass(false);
   }
 
   useEffect(() => {
@@ -182,7 +193,7 @@ const SignUp = (props) => {
       <div className="signup-wrapper">
         {showOtpModal ? <div className="otp-modal">
           <div className="logo">
-            <div className="name">Quill.</div>
+            <div className="name" onClick={() => navigate('/quill')} style={{cursor:"pointer"}} >Quill.</div>
           </div>
           <h1>Verify your account</h1>
           <p>Enter the verification code sent to your email id for sign up.</p>
@@ -212,7 +223,7 @@ const SignUp = (props) => {
       <div className="main-container">
           <div className="signin-form">
             <div className="logo">
-              <div className="name">Quill.</div>
+              <div className="name" onClick={() => navigate('/quill')} style={{cursor:"pointer"}} >Quill.</div>
             </div>
             <h1>{showSignUp ? 'Join us today' : 'Welcome Back'}</h1>
             {showSignUp ? 
@@ -252,14 +263,14 @@ const SignUp = (props) => {
               <div className="input">
                 <label>Password</label>
               <div className="input-contr">
-                <input name="password" type="password" value={userCreds?.password} onChange={setCredentials}></input>
+                <input name="password" type={showPass ? 'text' : 'password'} value={userCreds?.password} onChange={setCredentials}></input>
                 <button onClick={() => handleShowPassword()}>{showPass ? <FaEye/> : <FaEyeSlash/>}</button>
               </div>
-              </div>
+              </div> 
             </div>}
             {(showError && isValidate(userCreds.email, userCreds.password)?.error) && <div className="error-msg">{isValidate(userCreds.email, userCreds.password).error}</div>}
             {userExists && <div className="otp-error">User is already registered with this email address.</div>}
-            <button className="signIn-btn" onClick={() => showSignUp ? handleSendOtp() : handleSignUp()} disabled={ !userCreds?.email || !userCreds?.password || userExists}>{showSignUp ? 'Sign up' : 'Sign in'}</button>
+            <button className="signIn-btn" onClick={() => showSignUp ? handleSendOtp() : handleSignUp('signIn')} disabled={ !userCreds?.email || !userCreds?.password || userExists}>{showSignUp ? 'Sign up' : 'Sign in'}</button>
 
           </div>
           {showSignUp ? (

@@ -14,11 +14,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home/>}></Route>
+          <Route path="/" element={<HeroSection/>}></Route>
           <Route path="/quill" element={<HeroSection/>}></Route>
-          <Route path="/" element={<ProtectedRoute/>}>
-            <Route path="/home" element={<Landing/>}></Route>
-          </Route>
+          <Route path="/join" element={<Home/>}></Route>
           <Route path="/" element={<ProtectedRoute/>}>
             <Route path="/new-story" element={<Editor/>}></Route>
           </Route>

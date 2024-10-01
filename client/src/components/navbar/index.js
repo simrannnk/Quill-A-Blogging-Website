@@ -24,36 +24,36 @@ const Navbar = (props) => {
             {!userInfo.isAuthenticated  && <div className='right'>
             {["Write", "Sign in", "Get Started"].map((item, idx) => {
                     return(
-                        <button className={idx === 2 && 'get-started'} onClick={() => idx === 0 ? navigate("/") : null }>
+                        <button className={idx === 2 && 'get-started'} onClick={() => navigate('/join')}>
                             {idx === 0 && <FaPenToSquare style={{marginRight:"5px"}}/>}
                             {item}</button>
                     )
                 })}
             </div>}
                 
-                <div className='right'>
+                {userInfo.isAuthenticated && <div className='right'>
                     {
-                        userInfo.isAuthenticated && page !== 'newStory' && 
+                        page !== 'newStory' && 
                             <button onClick={() => navigate('/new-story')}>
                                 <FaPenToSquare style={{marginRight:"5px"}}/>
                                 Write</button>
                     }
                                        {
-                        userInfo.isAuthenticated && page !== 'home' && 
-                            <button onClick={() => navigate('/home')}>
-                                <GoHome style={{marginRight:"5px"}}/>
+                        page !== 'home' && 
+                            <button onClick={() => navigate('/join')}>
+                                <GoHome style={{marginRight:"5px", fontSize:"17px"}}/>
                                 Home</button>
                     }
                     {page === 'newStory' && 
                         <>
-                            <button className='publish-btn' disabled={!blogTitle || blogContent.length < 30 || !getHtmlContent(blogContent)} onClick={() => getContentToRender(true)}>Publish</button>
+                            <button className='publish-btn' disabled={!blogTitle || !getHtmlContent(blogContent) || getHtmlContent(blogContent).length < 30} onClick={() => getContentToRender(true)}>Publish</button>
                             {/* <button className='publish-btn' disabled={!blogTitle || !getHtmlContent(blogContent)}>Schedule</button> */}
                         </>
                     }
                     {userInfo && userInfo.isAuthenticated && <button className='user-inital' onClick={() => setShowDropdown(prev => !prev)}><div>{(userInfo.userName).substring(0,1).toUpperCase()}</div></button>}
 
                     {showDropdown && <UserDropdown setShowDropdown={setShowDropdown}/>}
-                </div>
+                </div>}
 
         </div>
     )

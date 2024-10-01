@@ -28,7 +28,7 @@ const HeroSection = () => {
           </h1>
           <p className="para">Where Stories Come to Life</p>
           <div className="btn-container">
-            <button className="btn1" onClick={() => userInfo.isAuthenticated ? navigate('/new-story') : navigate('/')}>Start Writting</button>
+            <button className="btn1" onClick={() => userInfo.isAuthenticated ? navigate('/new-story') : navigate('/join')}>Start Writting</button>
           </div>
       
         </div>

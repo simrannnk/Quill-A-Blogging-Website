@@ -72,7 +72,6 @@ const Profile = () => {
         await axiosInstance
           .post(`/api/user/list`, { userList : list } )
           .then((res) => {
-            console.log("ressd is", res.data.userData)
             if(type === 'following'){
                 setFollowingList(res.data.userData);
             }
@@ -91,7 +90,7 @@ const Profile = () => {
         }
         setAboutAdded(userData?.about?.length > 0)
         setAboutText(userData?.about)
-        if(userData){
+        if(userData && userData._id){
             selectedTab === 'Home' && getAllBlogsData();
         }
       },[userData])

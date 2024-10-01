@@ -42,19 +42,20 @@ const UserDropdown = (props) => {
         }
     ]
 
-    // useEffect(() => {
-    //     const handleClickOutside = (event) => {
-    //       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-    //         setIsOpen(false);
-    //       }
-    //     };
-    
-    //     document.addEventListener('mousedown', handleClickOutside);
-    
-    //     return () => {
-    //       document.removeEventListener('mousedown', handleClickOutside);
-    //     };
-    //   }, [dropdownRef]);
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false); 
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
 
     const maskEmail = (email) => {
         const [localPart, domain] = email.split('@'); // Split email into local part and domain part
@@ -82,7 +83,7 @@ const UserDropdown = (props) => {
     return(
         <>
         <div className='modal-overlay'></div>
-        <div className="dropdown-contr">
+        <div className="dropdown-contr" ref={dropdownRef}>
             <div className='list-contr'>
                 {list && list.map((item) => {
                     return(

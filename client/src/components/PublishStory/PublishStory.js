@@ -1,10 +1,11 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import './style.scss';
 import { RxCross2 } from "react-icons/rx";
 import axiosInstance from "../../service/api";
 import Success from "../modals/Success";
 import DateTime from "../dateTime";
 import { useNavigate } from "react-router-dom";
+// import { sendPublishMail } from "../../../../server/sendEmail";
 
 const PublishStory = ({getContentToRender, draftId, draftContent, draftTitle}) => {
     const navigate = useNavigate();
@@ -15,6 +16,8 @@ const PublishStory = ({getContentToRender, draftId, draftContent, draftTitle}) =
     const [showSuccess, setShowSuccess] = useState(false);
     const [showSchedule, setShowSchedule] = useState(false);
     const [isScheduled, setIsScheduled] = useState(false);
+    const [userData, setUserData] = useState({});
+    const [followerData, setFollowerData] = useState([]);
 
     const userInfo = JSON.parse(localStorage.getItem('userAuth')) || {};
 
@@ -57,15 +60,17 @@ const PublishStory = ({getContentToRender, draftId, draftContent, draftTitle}) =
     const publishBlog = async (blogId) => {
         const payload = {
             storyTags: storyTags,
-            bannerImage: image
+            bannerImage: image,
+            followingList : followerData,
+            userName: userInfo.userName,
+            blogTitle: draftTitle
         }
-        try {
-          const response = await axiosInstance.post(`/api/blog/${blogId}/publish`, payload);
-          setShowSuccess(true);
-          console.log('Blog published:', response.data);
-        } catch (error) {
-          console.error('Error publishing the blog:', error);
-        }
+        const response = await axiosInstance.post(`/api/blog/${blogId}/publish`, payload).then(() => {
+            setShowSuccess(true);
+        })
+        .catch ((error) => {
+            console.error('Error publishing the blog:', error);
+        }) 
     };
 
 
@@ -82,6 +87,52 @@ const PublishStory = ({getContentToRender, draftId, draftContent, draftTitle}) =
         const data = new FormData();
         data.append()
     }
+
+    const getUserDetails = async (userId) => {
+        await axiosInstance
+            .get(`/api/user/${userId}/details`)
+            .then((res) => {
+            setUserData(res.data.user);
+            })
+            .catch((err) => {
+            console.log("error is", err);
+            });
+    };
+
+    
+    // const getFollowerList = async (userId) => {
+    //     await axiosInstance
+    //     .get(`/api/user/${userId}/details`)
+    //     .then((res) => {
+    //       setFollowerData(res.data.user);
+    //     })
+    //     .catch((err) => {
+    //       console.log("error is", err);
+    //     });
+    // }
+
+    const getUserList =  async (list) => {
+        await axiosInstance
+          .post(`/api/user/list`, { userList : list } )
+          .then((res) => {
+            const followData = res.data.userData.map((item) => {
+                return item.userId;
+            })
+            setFollowerData(followData);
+          })
+          .catch((err) => {
+            console.log("error is", err);
+          });
+    };
+
+    useEffect(() => {
+        getUserDetails(userInfo.user_id);
+    },[])
+
+    useEffect(() => {
+        if(userData.followers?.length > 0)
+            getUserList(userData?.followers)
+    },[userData])
 
     return(
     <>
