@@ -40,7 +40,7 @@ const Navbar = (props) => {
                     }
                                        {
                         page !== 'home' && 
-                            <button onClick={() => navigate('/join')}>
+                            <button onClick={() => navigate('/home')}>
                                 <GoHome style={{marginRight:"5px", fontSize:"17px"}}/>
                                 Home</button>
                     }

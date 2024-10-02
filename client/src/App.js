@@ -18,6 +18,9 @@ function App() {
           <Route path="/quill" element={<HeroSection/>}></Route>
           <Route path="/join" element={<Home/>}></Route>
           <Route path="/" element={<ProtectedRoute/>}>
+            <Route path="/home" element={<Landing/>}></Route>
+          </Route>
+          <Route path="/" element={<ProtectedRoute/>}>
             <Route path="/new-story" element={<Editor/>}></Route>
           </Route>
           <Route path="/" element={<ProtectedRoute/>}>
