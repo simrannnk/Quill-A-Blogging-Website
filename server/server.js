@@ -12,7 +12,11 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: ['http://localhost:3000', 'https://quill-blogging-website.onrender.com'], // Replace with your client URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods if needed
+    credentials: true, // Enable this if you're using cookies/authentication
+}));
 app.use(express.json());
 
 scheduleBlogPublishing();
