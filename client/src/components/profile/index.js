@@ -201,6 +201,7 @@ const Profile = () => {
                         <span style={{margin:"0 4px", fontSize:"30px"}}>.</span>
                         <span>{userData?.following?.length} Following</span>
                     </div>
+                    <button className="edit-profile">Edit Profile</button>
                     {followersList?.length > 0 && <div className="follow-wrapper">
                         <div className="head">Members who follow you</div>
                         {
