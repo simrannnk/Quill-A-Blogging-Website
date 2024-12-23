@@ -73,7 +73,6 @@ const Editor = () => {
     await axiosInstance
       .post("/api/blog/create", payload)
       .then((res) => {
-        console.log("response is", res);
       })
       .catch((err) => {
         console.log("error is", err);
@@ -81,7 +80,6 @@ const Editor = () => {
   };
 
   const handleClick = async () => {
-    console.log("helo jdjk");
     await axiosInstance
       .get("/api/blog/getAllBlogs")
       .then((res) => {

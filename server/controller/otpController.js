@@ -8,9 +8,10 @@ const generateOtp = () => {
   };
 
 export const sendOtp = async (req,res) => {
+    debugger
     try{
         const { userId } = req.body;
-
+        debugger
         const user = await Otp.findOne({email: userId});
         if(user){
             user.createdAt = new Date()
@@ -33,7 +34,7 @@ export const sendOtp = async (req,res) => {
             const newUser = otpData && new Otp(otpData);
             await newUser.save();
         }
-        res.status(200).json({ message: "OTP sent successfully", status: "SUCCESS"})
+        res.status(200).json({ message: "OTP sent successfullyyyyy", status: "SUCCESS"})
     }catch(err){
         console.log("error is", err);
         res.status(500).json({message: "Failed to send OTP", status : "FAIL"})

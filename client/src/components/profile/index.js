@@ -10,7 +10,6 @@ const Profile = () => {
     const userInfo = JSON.parse(localStorage.getItem('userAuth')) || {};
     const { userId } = useParams();
     const path = window.location.href;
-    console.log("path is", path)
     const [selectedTab, setSelectedTab] = useState('Home')
     const [allBlogs, setAllBlogs] = useState([])
     const [addAbout, setAddAbout] = useState(false);
@@ -48,7 +47,6 @@ const Profile = () => {
         await axiosInstance
           .post("/api/blog/getAllBlogs", {authorId: userData._id, selfBlog: true})
           .then((res) => {
-            console.log("res is", res);
             setAllBlogs(res && res.data && res.data.allBlogs);
           })
           .catch((err) => {

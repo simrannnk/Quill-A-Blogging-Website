@@ -73,13 +73,10 @@ const SignUp = (props) => {
       email : userCreds.email
     }
     await axiosInstance.post('api/user/exists', payload).then((res) => {
-      console.log("res is", res);
       if(res?.data?.exsiting){
-        console.log("if")
         setUserExists(true);
       }
       else{
-        console.log("else")
         setShowOtpModal(true);
         const payload =  {
           userId: userCreds.email

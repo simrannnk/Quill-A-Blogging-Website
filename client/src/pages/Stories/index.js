@@ -13,7 +13,6 @@ const Stories = () =>  {
         await axiosInstance
           .post("/api/blog/getAllBlogs", {authorId: userInfo.user_id, selfBlog: true})
           .then((res) => {
-            console.log("res is", res);
             setAllBlogs(res && res.data && res.data.allBlogs);
           })
           .catch((err) => {
@@ -31,7 +30,6 @@ const Stories = () =>  {
       }
 
     useEffect(() => {
-        console.log("helo world");
         getAllBlogsData();
     },[])
 

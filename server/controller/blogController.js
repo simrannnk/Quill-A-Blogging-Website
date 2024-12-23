@@ -212,7 +212,6 @@ export const likeBlog = async (req, res) => {
       
         try {
           const blog = await Blog.findById(id);
-          console.log("blog is", blog)
       
           if (!blog) {
             return res.status(404).send({ message: 'Blog not found' });
